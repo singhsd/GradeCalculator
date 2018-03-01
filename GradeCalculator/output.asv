@@ -1,0 +1,30 @@
+function[ ]= output()
+f = fopen('answer.csv','w');
+theta([1:31], [1:3])= zeros([1:31], [1:3]);
+Z=scaling2();
+Z1=scaling();
+X([1:100], [2:31])=Z([1:100], [1:30]);
+X([1:100], 1)=ones([1:100],1);
+ans=[];
+lambda=0;
+f=0;
+qw=1;
+            alpha=0.02;
+                    	theta([1:31],1)=grd(X, Y1, lambda, alpha);
+                        theta([1:31],2)=grd(X, Y2, lambda, alpha);
+                        theta([1:31],3)=grd(X, Y3, lambda, alpha);
+            i=1;
+                    while i<=100,
+                        k=1;
+                        while k<=3,
+            Q(1, [2:31])=Z(i, [1:30]);
+                        Q(1, 1)=1;
+                    ans(1, k)=Q*theta([1:31], k);
+                    k=k+1;
+                        end;
+                fprintf(f,'%d,',ans(1, [1:3]));
+                fprintf(f,'\n');
+            i=i+1;
+        end;
+        fclose(f);
+end	
